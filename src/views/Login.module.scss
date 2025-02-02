@@ -1,0 +1,44 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to right, #fbc2eb, #a6c1ee);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .login_wrapper {
+    background-color: #fff;
+    width: computeRem(358px);
+    height: computeRem(588px);
+    border-radius: computeRem(15px);
+    padding: 0 computeRem(50px);
+
+    .title {
+      font-size: computeRem(38px);
+      font-weight: bold;
+      text-align: center;
+      line-height: computeRem(200px);
+    }
+    .btn {
+      text-align: center;
+      padding: computeRem(10px) 0;
+      width: 100%;
+      margin-top: computeRem(40px);
+      background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
+      color: #fff;
+      cursor: pointer;
+    }
+    .msg {
+      text-align: center;
+      line-height: computeRem(88px);
+      cursor: pointer;
+    }
+  }
+}
+:global {
+  #message_username {
+    height: computeRem(40px);
+  }
+  #message_password {
+    height: computeRem(30px);
+  }
+}
