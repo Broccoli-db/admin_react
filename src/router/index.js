@@ -1,5 +1,6 @@
 import routers from "./routers";
 import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   Routes,
   Route,
@@ -9,6 +10,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import Loading from "../components/Loading";
+import ErrorFallback from "../components/ErrorFallback";
 const Elements = (props) => {
   let { element: Element } = props;
   let navigate = useNavigate();
@@ -35,9 +37,11 @@ const createRouter = (routers) => {
 };
 const RouterView = () => {
   return (
-    <Suspense fallback={<Loading></Loading>}>
-      <Routes>{createRouter(routers)}</Routes>
-    </Suspense>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      < Suspense fallback={< Loading ></Loading >}>
+        <Routes>{createRouter(routers)}</Routes>
+      </Suspense >
+    </ErrorBoundary>
   );
 };
 export default RouterView;
