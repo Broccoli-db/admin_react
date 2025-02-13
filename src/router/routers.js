@@ -7,7 +7,10 @@ import {
   ClusterOutlined,
 } from "@ant-design/icons";
 import { withKeepAlive } from "keepalive-react-component";
-export const dynamicRoute = [
+// 模拟权限
+const auth = ["角色管理"];
+
+const allDynamicRoute = [
   {
     path: "/layout/home",
     name: "首页",
@@ -49,6 +52,17 @@ export const dynamicRoute = [
     ],
   },
 ];
+const routeFiltering = (routerArr) => {
+  if (!Array.isArray(routerArr)) return routerArr
+  let arr = routerArr.filter((item) => {
+    if (item.children) {
+      item.children = routeFiltering(item.children)
+    }
+    return !auth.includes(item.name)
+  })
+  return arr
+}
+export const dynamicRoute = routeFiltering(allDynamicRoute)
 const routers = [
   {
     path: "/",
