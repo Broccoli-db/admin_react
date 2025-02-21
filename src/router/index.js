@@ -26,7 +26,7 @@ const Elements = (props) => {
   })
   dispatch(setUser(localStorage.getItem("user")))
   // 添加水印
-  // setWaterMark(user || "")
+  setWaterMark(user || "")
   return <Element {...{ navigate, location, params, searchParams }}></Element>;
 };
 const createRouter = (routers) => {
