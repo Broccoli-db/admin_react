@@ -3,10 +3,9 @@ import { Menu } from "antd";
 import { dynamicRoute } from "@/router/routers";
 import { useNavigate, useLocation } from "react-router-dom";
 export default function Index() {
-  console.log(useLocation());
-
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  console.log(dynamicRoute, pathname);
   const items = useMemo(() => {
     const getItem = (name, path, icon, children) => ({
       label: name,
@@ -28,7 +27,7 @@ export default function Index() {
   }, []);
   // 点击菜单
   const clickTheMenu = ({ item, key, keyPath, selectedKeys, domEvent }) => {
-    console.log(item, key, keyPath, selectedKeys, domEvent);
+    // console.log(item, key, keyPath, selectedKeys, domEvent);
     navigate(key, { replace: true });
   };
   return (

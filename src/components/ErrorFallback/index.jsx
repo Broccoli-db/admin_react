@@ -1,7 +1,6 @@
 import React from 'react'
 import sty from './index.module.scss'
 export default function Index({ error, resetErrorBoundary }) {
-    console.log(error, resetErrorBoundary);
     return (
         <div className={sty.box}>
             <div className={sty.content}>

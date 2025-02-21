@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Input } from "antd";
 import sty from "./Login.module.scss";
 import { useAllState } from "@/utils";
+
 export default function Login(props) {
   const [formObj, setFormObj] = useAllState({
     username: "admin",
@@ -11,11 +12,12 @@ export default function Login(props) {
   // 当表单提交成功时，执行此函数
   const onFinish = (values) => {
     // 打印表单提交的值
-    console.log("Success:", values);
+    // console.log("Success:", values);
     // 调用props中的navigate函数，跳转到"/home"页面，并替换当前页面
     props.navigate("/layout", {
       replace: true,
     });
+    localStorage.setItem("user", JSON.stringify(formObj.username))
   };
   // 当表单验证失败时，执行此函数
   const onFinishFailed = (errorInfo) => {

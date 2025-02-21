@@ -1,9 +1,5 @@
 import axios from "axios";
 import { tansParams, errorCode, cache } from "./index";
-// import { ElNotification, ElMessageBox, ElMessage, ElLoading } from 'element-plus'
-// import { saveAs } from 'file-saver'
-// import useUserStore from '@/store/modules/user'
-
 let downloadLoadingInstance;
 // 是否显示重新登录
 export let isRelogin = { show: false };

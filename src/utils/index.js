@@ -143,3 +143,33 @@ export const cache = {
    */
   local: localCache
 }
+// 设置水印
+export const setWaterMark = (str = "", op = 0, addEEl = document.body) => {
+  let id = Symbol('watermark').toString()
+  if (document.getElementById(id)) {
+    addEEl.removeChild(document.getElementById(id))
+  }
+  const can = document.createElement('canvas')
+  can.width = 200
+  can.height = 100
+  const ctx = can.getContext('2d')
+  if (ctx) {
+    ctx.rotate(-15 * Math.PI / 180)//设置角度为 -15度
+    ctx.font = '14px Microsoft Yahei'
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
+    ctx.textBaseline = 'middle'
+    ctx.fillText(str, can.width / 10, can.height / 2)
+  }
+  const div = document.createElement('div')
+  div.id = id
+  div.style.pointerEvents = 'none'
+  div.style.position = 'fixed'
+  div.style.top = '0'
+  div.style.left = '0'
+  div.style.zIndex = '100000000000000000'
+  div.style.width = `${document.documentElement.clientWidth}px`
+  div.style.height = `${document.documentElement.clientHeight}px`
+  div.style.background = `url(${can.toDataURL('image/png')}) repeat`
+  div.style.opacity = 0.3
+  addEEl.appendChild(div)
+}

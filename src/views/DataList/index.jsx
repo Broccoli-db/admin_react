@@ -1,36 +1,26 @@
-import React, { useActionState } from "react";
-export default function Index() {
-  const [state, sub, isLoading] = useActionState(async (pre, formData) => {
-    /**
-     * @pre 上一次的state
-     * @formData 表单数据 可以用过 formData.get('name') 获取表单中的name
-     */
-    console.log(pre, formData.get("name"));
-    try {
-      const res = await fetch("/zhi/news/latest");
-      const data = await res.json();
-      return data; //返回的结果会给到state
-    } catch (error) {
-      return error; //返回的结果会给到state
-    }
-  }, null);
-  const fn = () => {
-    console.log(123456);
-  };
-  fn();
-  /**
-   * @state 初始值是useActionState()的第二个参数
-   * @sub 触发action的函数 是useActionState()的第一个参数
-   * @isLoading 是否正在提交 正在提交为true 提交完成/失败为false
-   */
+import { Button } from 'antd';
+import React, { useState, memo } from 'react'
+function Index() {
+  const [count, setCount] = useState(0)
+  const [num, setNum] = useState(0)
   return (
     <div>
-      <form action={sub}>
-        <input type="text" name="name" />
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? "提交中..." : "提交"}
-        </button>
-      </form>
+      我是父组件
+      <Button onClick={() => setCount(count + 1)}>点击</Button>
+      <Button onClick={() => setNum(num + 1)}>点击</Button>
+      <Child count={count} num={num} />
     </div>
   );
 }
+const fn = (prevProps, nextProps) => {
+  console.log(prevProps, nextProps);
+  return prevProps.count === nextProps.count
+}
+const Child = memo(() => {
+  console.log(123);
+  return <div>
+    我是子组件
+  </div>
+}, fn)
+
+export default Index
