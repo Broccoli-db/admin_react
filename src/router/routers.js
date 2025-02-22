@@ -53,16 +53,16 @@ const allDynamicRoute = [
   },
 ];
 const routeFiltering = (routerArr) => {
-  if (!Array.isArray(routerArr)) return routerArr
+  if (!Array.isArray(routerArr)) return routerArr;
   let arr = routerArr.filter((item) => {
     if (item.children) {
-      item.children = routeFiltering(item.children)
+      item.children = routeFiltering(item.children);
     }
-    return !auth.includes(item.name)
-  })
-  return arr
-}
-export const dynamicRoute = routeFiltering(allDynamicRoute)
+    return !auth.includes(item.name);
+  });
+  return arr;
+};
+export const dynamicRoute = routeFiltering(allDynamicRoute);
 const routers = [
   {
     path: "/",
@@ -72,6 +72,11 @@ const routers = [
     path: "/login",
     name: "Login",
     element: lazy(() => import("../views/Login.jsx")),
+  },
+  {
+    path: "/largeScreen",
+    name: "LargeScreen",
+    element: lazy(() => import("../views/LargeScreen/index.jsx")),
   },
   {
     path: "/layout",

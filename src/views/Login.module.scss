@@ -7,38 +7,38 @@
   align-items: center;
   .login_wrapper {
     background-color: #fff;
-    width: computeRem(358px);
-    height: computeRem(588px);
-    border-radius: computeRem(15px);
-    padding: 0 computeRem(50px);
+    width: computeRem(358);
+    height: computeRem(588);
+    border-radius: computeRem(15);
+    padding: 0 computeRem(50);
 
     .title {
-      font-size: computeRem(38px);
+      font-size: computeRem(38);
       font-weight: bold;
       text-align: center;
-      line-height: computeRem(200px);
+      line-height: computeRem(200);
     }
     .btn {
       text-align: center;
-      padding: computeRem(10px) 0;
+      padding: computeRem(10) 0;
       width: 100%;
-      margin-top: computeRem(40px);
+      margin-top: computeRem(40);
       background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
       color: #fff;
       cursor: pointer;
     }
     .msg {
       text-align: center;
-      line-height: computeRem(88px);
+      line-height: computeRem(88);
       cursor: pointer;
     }
   }
 }
 :global {
   #message_username {
-    height: computeRem(40px);
+    height: computeRem(40);
   }
   #message_password {
-    height: computeRem(30px);
+    height: computeRem(30);
   }
 }
