@@ -1,7 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
+import { ContextProvider } from "@/context";
 import * as echarts from "echarts";
 import sty from "./index.module.scss";
 export default function Index() {
+  const { widthNum } = useContext(ContextProvider);
+
   const leftTop = useRef(null);
   const leftBottom = useRef(null);
   let myChart;
@@ -15,6 +18,11 @@ export default function Index() {
     },
     legend: {
       data: ["Email", "Union Ads", "Video Ads", "Direct", "Search Engine"],
+      textStyle: {
+        color: "#000", // 设置文字颜色
+        fontSize: 60, // 设置字体大小
+        fontFamily: "Arial, sans-serif", // 设置字体
+      },
     },
     grid: {
       left: "3%",
@@ -71,6 +79,7 @@ export default function Index() {
   useEffect(() => {
     myChart = echarts.init(leftTop.current);
     option && myChart.setOption(option);
+    console.log(widthNum);
   });
   window.onresize = function () {
     // myChart.dispose();
