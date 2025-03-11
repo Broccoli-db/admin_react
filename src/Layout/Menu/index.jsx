@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 export default function Index() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  console.log(dynamicRoute, pathname);
+  // console.log(dynamicRoute, pathname);
   const items = useMemo(() => {
     const getItem = (name, path, icon, children) => ({
       label: name,

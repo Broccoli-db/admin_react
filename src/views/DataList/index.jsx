@@ -1,8 +1,11 @@
-import { Button } from 'antd';
-import React, { useState, memo } from 'react'
+import React, { useState, memo, useEffect } from "react";
+import { Button } from "antd";
 function Index() {
-  const [count, setCount] = useState(0)
-  const [num, setNum] = useState(0)
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(0);
+  useEffect(() => {
+    console.log(123);
+  });
   return (
     <div>
       我是父组件
@@ -14,13 +17,11 @@ function Index() {
 }
 const fn = (prevProps, nextProps) => {
   console.log(prevProps, nextProps);
-  return prevProps.count === nextProps.count
-}
+  return prevProps.count === nextProps.count;
+};
 const Child = memo(() => {
   console.log(123);
-  return <div>
-    我是子组件
-  </div>
-}, fn)
+  return <div>我是子组件</div>;
+}, fn);
 
-export default Index
+export default Index;

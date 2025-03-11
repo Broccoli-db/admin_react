@@ -4,7 +4,6 @@ import * as echarts from "echarts";
 import sty from "./index.module.scss";
 export default function Index() {
   const { widthNum } = useContext(ContextProvider);
-
   const leftTop = useRef(null);
   const leftBottom = useRef(null);
   let myChart;
@@ -18,16 +17,23 @@ export default function Index() {
     },
     legend: {
       data: ["Email", "Union Ads", "Video Ads", "Direct", "Search Engine"],
+      width: "100%",
+      padding: [widthNum, widthNum * 0.5],
       textStyle: {
-        color: "#000", // 设置文字颜色
-        fontSize: 60, // 设置字体大小
-        fontFamily: "Arial, sans-serif", // 设置字体
+        color: "#fff", // 设置文字颜色
+        fontSize: widthNum * 1.2, // 设置字体大小
+        fontWeight: "bold", // 设置字体粗细
       },
+      icon: "pin",
+      itemWidth: widthNum * 2.2, // 设置图例标记的宽度
+      itemHeight: widthNum, // 设置图例标记的高度
+      itemGap: widthNum, // 设置图例标记之间的间距
     },
     grid: {
       left: "3%",
       right: "4%",
       bottom: "3%",
+      top: "18%",
       containLabel: true,
     },
     toolbox: {
@@ -39,9 +45,17 @@ export default function Index() {
       type: "category",
       boundaryGap: false,
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      axisLabel: {
+        color: "#fff", // 设置文字颜色
+        fontSize: widthNum * 1.5, // 设置字体大小
+      },
     },
     yAxis: {
       type: "value",
+      axisLabel: {
+        color: "#fff", // 设置文字颜色
+        fontSize: widthNum * 1.5, // 设置字体大小
+      },
     },
     series: [
       {
@@ -82,10 +96,7 @@ export default function Index() {
     console.log(widthNum);
   });
   window.onresize = function () {
-    // myChart.dispose();
     myChart.resize();
-    // echarts.init(leftTop.current);
-    // myChart.setOption(option);
   };
   return (
     <>

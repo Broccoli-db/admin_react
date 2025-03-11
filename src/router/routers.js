@@ -75,13 +75,13 @@ const routers = [
   },
   {
     path: "/largeScreen",
-    name: "LargeScreen",
+    name: "大屏",
     element: lazy(() => import("../views/LargeScreen/index.jsx")),
   },
   {
     path: "/layout",
     name: "Layout",
-    element: lazy(() => import("@/components/Layout/index.jsx")),
+    element: lazy(() => import("@/Layout/index.jsx")),
     children: [
       {
         path: "/layout",
