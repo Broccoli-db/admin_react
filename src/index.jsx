@@ -11,13 +11,26 @@ import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-
 import store from "./store"; //引入store文件
 import "./index.scss";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <ConfigProvider locale={zhCN}>
+    <ConfigProvider
+      theme={{
+        components: {
+          Menu: {
+            Layout: "#00b96b",
+            algorithm: true, // 启用算法
+          },
+          Input: {
+            colorPrimary: "#eb2f96",
+            algorithm: true, // 启用算法
+          },
+        },
+      }}
+      locale={zhCN}
+    >
       <Provider store={store}>
         <HashRouter>
           <App />
